@@ -5,7 +5,7 @@
 - APP  : https://hp-contact.herokuapp.com/
 
 # Description
-  This project use PHP.
+  This project use PHP.  
   Create a fully-functioning online "contact support" form, in *PHP*
 
 ## Technologies
