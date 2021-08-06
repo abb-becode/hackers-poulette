@@ -1,22 +1,5 @@
 <?php
 
-    /*if (isset($_POST['firstname'])) {
-        if (is_alpha($_POST['firstname'])) {
-            echo 'field ok !';
-        } else {
-            echo 'field required !';
-        }
-    }*/
-	/*if(isset($_POST['submit']))
-	{
-		//form has been submitted
-		//do validation and database operation and whatever you need
-      echo "form submitted";
-	} else {
-		//form has not been submitted
-		//print the form
-	}*/
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +13,6 @@
 <body>
     <h1>CONTACT US</h1>
     <div id="contact-request" class="contact-layout-request">
-        <!--<form action="" id="frm-contact" method="post" autocomplete="off">-->
         <form name="frm-contact" id="frm-contact" action="server/mail.php" onsubmit="return validateForm()" method="POST">
             <span class="mandatory">[ <span class="red">*</span> Indicates mandatory fields ]</span>
             <div class="flex-wrapper mt-24">
@@ -91,11 +73,5 @@
 
 </body>
 <script src="client/assets/js/script.js"></script>
-<!--<script src="Javascript/UploadAjaxABCI.js"></script>
-<script>
-    var destination_ajax = 'Php_Upload/UploadAjaxABCI_Upload_Basique.php';
-    var up = new UploadAjaxABCI(destination_ajax,'#form_base','#reponse_upload');
-    $(function(){up.Start()});
-</script>-->
 </html>
 
