@@ -1,16 +1,16 @@
 <?php
 	use PHPMailer\PHPMailer\PHPMailer;
-	//use PHPMailer\PHPMailer\SMTP;
+	use PHPMailer\PHPMailer\SMTP;
 	use PHPMailer\PHPMailer\Exception;
 
 	//Load Composer's autoloader
-	//require 'vendor/autoload.php';
+	require '../vendor/autoload.php';
 	/*require 'vendor/phpmailer/phpmailer/src/Exception.php';
 	require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
 	require 'vendor/phpmailer/phpmailer/src/SMTP.php';*/
 
 	//Create an instance; passing `true` enables exceptions
-	$mail = new PHPMailer(true);
+	//$mail = new PHPMailer(true);
 
 
 	//check email
@@ -25,21 +25,31 @@
 	$message = $_POST['message'];
 	$txt = "You have received an e-mail from ".$fullName ."\r\nEmail: " .$email ."\r\nMessage: ". $message;
 
+	$phpmailer = new PHPMailer();
 	try {
+
+		//$phpmailer = new PHPMailer();
+		$phpmailer->isSMTP();
+		$phpmailer->Host = 'smtp.mailtrap.io';
+		$phpmailer->SMTPAuth = true;
+		$phpmailer->Port = 2525;
+		$phpmailer->Username = '85b4c4715f9f6d';
+		$phpmailer->Password = '339c8925bc24a3';
+
 		//Server settings
 		//$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-		$mail->isSMTP();                                            //Send using SMTP
-		$mail->Host       = 'smtp.mailtrap.io';                     //Set the SMTP server to send through
-		$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-		$mail->Username   = '2c8cefa4148a0a';                     //SMTP username
-		$mail->Password   = '20436aa88e08ac';                                //SMTP password
-		$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;           //Enable implicit TLS encryption
-		$mail->Port       = 2525;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-		$mail->SMTPOptions = array( 'ssl' => array( 'verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true ) );
+		//$mail->isSMTP();                                            //Send using SMTP
+		//$mail->Host       = 'smtp.mailtrap.io';                     //Set the SMTP server to send through
+		//$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+		//$mail->Username   = '2c8cefa4148a0a';                     //SMTP username
+		//$mail->Password   = '20436aa88e08ac';                                //SMTP password
+		//$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;           //Enable implicit TLS encryption
+		//$mail->Port       = 2525;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+		//$mail->SMTPOptions = array( 'ssl' => array( 'verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true ) );
 
 		//Recipients
-		$mail->setFrom('from@example.com', 'Mailer');
-		$mail->addAddress($email, $fullName);     //Add a recipient
+		$phpmailer->setFrom('khedda.iyad@gmail.com', 'Mailer');
+		$phpmailer->addAddress($email, $fullName);     //Add a recipient
 		//$mail->addAddress($email);               //Name is optional
 		//$mail->addReplyTo('info@example.com', 'Information');
 		//$mail->addCC('cc@example.com');
@@ -50,16 +60,16 @@
 		//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 
 		//Content
-		$mail->isHTML(false);                                  //Set email format to HTML
-		$mail->Subject = $subject;
-		$mail->Body    = $txt;
+		$phpmailer->isHTML(false);                                  //Set email format to HTML
+		$phpmailer->Subject = $subject;
+		$phpmailer->Body    = $txt;
 		//$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-		$mail->send();
+		$phpmailer->send();
 		//echo 'Message has been sent';
 		header('Location:thankyou.html');
 	} catch (Exception $e) {
-		echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+		echo "Message could not be sent. Mailer Error: { $phpmailer->ErrorInfo }";
 	}
 
 
@@ -80,15 +90,15 @@
 
 
 	// Mail body content
-/*	$message = $_POST['message'];
-	$firstname = $_POST['firstname'];
-	$lastname = $_POST['lastname'];
-	$fullName = $firstname.' '. $lastname;
-	//$headers = "From: ".$fullName. "\r\n";
-	$txt = "You have received an e-mail from ".$fullName ."\r\nEmail: " .$email ."\r\nMessage: ". $message;
-	$bodyContent = $txt;
-	//$bodyContent .= '<p>This HTML email is sent from the localhost server using PHP by <b>CodexWorld</b></p>';
-	$mail->Body    = $bodyContent;*/
+	/*	$message = $_POST['message'];
+		$firstname = $_POST['firstname'];
+		$lastname = $_POST['lastname'];
+		$fullName = $firstname.' '. $lastname;
+		//$headers = "From: ".$fullName. "\r\n";
+		$txt = "You have received an e-mail from ".$fullName ."\r\nEmail: " .$email ."\r\nMessage: ". $message;
+		$bodyContent = $txt;
+		//$bodyContent .= '<p>This HTML email is sent from the localhost server using PHP by <b>CodexWorld</b></p>';
+		$mail->Body    = $bodyContent;*/
 
 	// Send email
 	/*if(!$mail->send()) {
@@ -121,7 +131,7 @@
 */
 	//echo "email valid 2 ? ";
 	//if($emailValid) {
-		//if (mail($to, $subject, $txt, $headers)) { echo "send email success"; } else { echo "send email failure"; } ;
+	//if (mail($to, $subject, $txt, $headers)) { echo "send email success"; } else { echo "send email failure"; } ;
 	//}
 
 	//header('Location:thankyou.html');

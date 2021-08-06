@@ -74,10 +74,10 @@
             <div>
                 <label for="subject">Subject</label>
                 <select class="form-control mb-24" name="subject">
-                    <option value="it" selected >IT Support</option>
-                    <option value="sales">Sales</option>
-                    <option value="change">Exchange</option>
-                    <option value="other">Other</option>
+                    <option value="IT-Support" selected >IT Support</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Exchange">Exchange</option>
+                    <option value="Other">Other</option>
                 </select>
             </div>
             <div>
