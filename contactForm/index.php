@@ -25,13 +25,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Contact Form</title>
-    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="client/assets/css/style.css" type="text/css">
 </head>
 <body>
     <h1>CONTACT US</h1>
     <div id="contact-request" class="contact-layout-request">
         <!--<form action="" id="frm-contact" method="post" autocomplete="off">-->
-        <form name="frm-contact" id="frm-contact" action="../server/mail.php" onsubmit="return validateForm()" method="POST">
+        <form name="frm-contact" id="frm-contact" action="server/mail.php" onsubmit="return validateForm()" method="POST">
             <span class="mandatory">[ <span class="red">*</span> Indicates mandatory fields ]</span>
             <div class="flex-wrapper mt-24">
                 <div>
@@ -90,7 +90,7 @@
     </div>
 
 </body>
-<script src="assets/js/script.js"></script>
+<script src="client/assets/js/script.js"></script>
 <!--<script src="Javascript/UploadAjaxABCI.js"></script>
 <script>
     var destination_ajax = 'Php_Upload/UploadAjaxABCI_Upload_Basique.php';
