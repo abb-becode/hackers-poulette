@@ -108,7 +108,7 @@
 		$_POST = [];
 		$result['success'] = "Your message was sent successfully!  ";
 
-		header('Location:index.php');
+		//header('Location:index.php');
 	} catch (Exception $e) {
 		//echo "Message could not be sent. Mailer Error: { $phpmailer->ErrorInfo }";
 		$result['failed'] = "Something went wrong. Check your Network connection and Please try again.";
